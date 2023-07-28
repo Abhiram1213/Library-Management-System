@@ -1,0 +1,47 @@
+Database Schema:
+
+A database schema is a logical representation of the entire database structure. It defines the tables, their columns, and the relationships between the tables. In this case, the library database has the following tables:
+Books: Stores information about books, including ISBN (International Standard Book Number), book title, category, rental price, status, author, and publisher.
+Branch: Stores information about library branches, including branch number, manager ID, branch address, and contact number.
+Employee: Stores information about library employees, including employee ID, employee name, position, and salary.
+Customer: Stores information about library customers, including customer ID, customer name, customer address, and registration date.
+IssueStatus: Stores information about issued books, including issue ID, customer ID (who borrowed the book), book name, issue date, and book ISBN.
+ReturnStatus: Stores information about returned books, including return ID, customer ID (who returned the book), book name, return date, and book ISBN.
+Table Structures:
+
+Each table in the library database has a specific structure with different columns. Here are the table structures:
+Books: ISBN (VARCHAR), Book_title (VARCHAR), Category (VARCHAR), Rental_Price (DECIMAL), Status (VARCHAR), Author (VARCHAR), Publisher (VARCHAR).
+Branch: Branch_no (INT), Manager_Id (INT), Branch_address (VARCHAR), Contact_no (VARCHAR).
+Employee: Emp_Id (INT), Emp_name (VARCHAR), Position (VARCHAR), Salary (DECIMAL).
+Customer: Customer_Id (INT), Customer_name (VARCHAR), Customer_address (VARCHAR), Reg_date (DATE).
+IssueStatus: Issue_Id (INT), Issued_cust (INT - Foreign Key), Issued_book_name (VARCHAR), Issue_date (DATE), Isbn_book (VARCHAR - Foreign Key).
+ReturnStatus: Return_Id (INT), Return_cust (INT - Foreign Key), Return_book_name (VARCHAR), Return_date (DATE), Isbn_book2 (VARCHAR - Foreign Key).
+Relationships:
+
+Relationships define how data in one table is related to data in another table. In this database, we have the following relationships:
+IssueStatus table has a foreign key Issued_cust that references the Customer table's Customer_Id, indicating which customer issued the book.
+IssueStatus table has a foreign key Isbn_book that references the Books table's ISBN, indicating which book was issued.
+ReturnStatus table has a foreign key Return_cust that references the Customer table's Customer_Id, indicating which customer returned the book.
+ReturnStatus table has a foreign key Isbn_book2 that references the Books table's ISBN, indicating which book was returned.
+Sample Data:
+
+The sample data represents example records inserted into the tables to demonstrate how the database works. For example:
+The Books table contains books with their ISBN, titles, categories, rental prices, statuses, authors, and publishers.
+The Branch table contains different library branches with branch numbers, manager IDs, addresses, and contact numbers.
+The Employee table contains employees with their IDs, names, positions, and salaries.
+The Customer table contains customers with their IDs, names, addresses, and registration dates.
+The IssueStatus table contains records of issued books, including issue IDs, customer IDs, book names, issue dates, and book ISBNs.
+The ReturnStatus table contains records of returned books, including return IDs, customer IDs, book names, return dates, and book ISBNs.
+SQL Queries for Data Retrieval:
+
+The SQL queries provided are used to retrieve specific information from the database. Explanations of these queries are as follows:
+Query 1: Retrieve book titles, categories, and rental prices from the Books table where the status is 'yes'.
+Query 2: Retrieve employee names and salaries from the Employee table and order the results by salary in descending order.
+Query 3: Retrieve book titles and customer names from the Books, IssueStatus, and Customer tables using JOIN operations on related columns.
+Query 4: Retrieve employee names and positions from the Employee table where the salary is greater than 50,000.
+Query 5: Retrieve customer names from the Customer table where the registration date is before '2022-01-01' and the customer ID is not found in the list of issued customers in the IssueStatus table.
+Query 6: Retrieve branch numbers and the total number of employees managed by each branch from the Branch and Employee tables using a JOIN and GROUP BY operations.
+Query 7: Retrieve distinct customer names from the Customer table by performing a JOIN with the IssueStatus table on customer ID and filtering results based on issue dates in June 2023.
+Query 8: Retrieve book titles from the Books table where the category is 'History'.
+Query 9: Retrieve branch numbers and the total number of employees managed by each branch from the Branch and Employee tables, group the results by branch number, and filter branches with more than five employees using the HAVING clause.
+Overall, this database is designed to manage book information, library branches, employees, customers, issued books, and returned books. The provided SQL queries allow users to retrieve specific information from the database based on their needs.
