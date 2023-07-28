@@ -1,3 +1,62 @@
+# Library Database Documentation
+
+This repository contains the SQL script for creating and populating a Library Database. The database contains tables for books, branches, employees, customers, issue status, and return status.
+
+## Database Schema
+
+The database schema includes the following tables:
+
+- `Books`: Contains information about books in the library.
+- `Branch`: Stores details about library branches.
+- `Employee`: Stores information about library employees.
+- `Customer`: Contains details about library customers.
+- `IssueStatus`: Tracks issued books to customers.
+- `ReturnStatus`: Tracks returned books by customers.
+
+## Sample Data
+
+The SQL script inserts sample data into the tables to demonstrate the database's functionality. The data includes sample books, branches, employees, customers, and issued/returned book records.
+
+## SQL Queries
+
+The SQL script also includes sample SQL queries for data retrieval. These queries demonstrate common database operations, such as filtering, ordering, joining, and aggregation.
+
+## Usage
+
+To create the library database and populate it with sample data, follow these steps:
+
+1. Create the database by running `CREATE DATABASE library;`.
+2. Use the library database with `USE library;`.
+3. Create the necessary tables using the provided `CREATE TABLE` statements.
+4. Insert sample data into the tables using the `INSERT INTO` statements.
+
+## Query Examples
+
+Here are a few examples of SQL queries for data retrieval:
+
+1. Retrieve books with a 'yes' status:
+
+SELECT Book_title, Category, Rental_Price
+FROM Books
+WHERE Status = 'yes'
+
+Get employee names and salaries in descending order of salary:
+SELECT Emp_name, Salary
+FROM Employee
+ORDER BY Salary DESC;
+
+Retrieve books issued with the customer names:
+SELECT b.Book_title, c.Customer_name
+FROM Books b
+JOIN IssueStatus i ON b.ISBN = i.Isbn_book
+JOIN Customer c ON i.Issued_cust = c.Customer_Id;
+
+
+## Contributing
+
+Contributions to this project are welcome. If you find any issues or have suggestions for improvements, please open an issue or create a pull request.
+
+
 Database Schema:
 
 A database schema is a logical representation of the entire database structure. It defines the tables, their columns, and the relationships between the tables. In this case, the library database has the following tables:
